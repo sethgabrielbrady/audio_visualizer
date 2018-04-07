@@ -2,8 +2,6 @@ var playing = false;
 var audio = document.getElementById('myAudio');
 var test = document.getElementById('test');
 
-
-
 function play() {
   var ctx = new AudioContext();
   var audioSrc = ctx.createMediaElementSource(audio);
@@ -23,10 +21,12 @@ function play() {
      // update data in frequencyData
      analyser.getByteFrequencyData(frequencyData);
      // render frame based on values in frequencyData
+     let x1 = frequencyData[0];
+     let y1 =frequencyData[1];
      let color1 = "#" + frequencyData[0] + "0" ;
+     let color2 = "#" + frequencyData[1] + "0" ;
      // console.log(frequencyData);
-     console.log(color1);
-      test.setAttribute("style","background-color:" + color1)
+    test.setAttribute("style","width:" + x1 + "vw;height:" + x1+"vh;background-color:" + color1);
   }
 
   audio.play();

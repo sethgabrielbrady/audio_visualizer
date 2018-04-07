@@ -1,5 +1,4 @@
 .test_circle {
-  width:100px;
-  height:100px;
+  transform:translate(10vw, 10vh);
   border-radius: 50%;
 }
