@@ -25,8 +25,8 @@ function play() {
      let y1 =frequencyData[1];
      let color1 = "#" + frequencyData[0] + "0" ;
      let color2 = "#" + frequencyData[1] + "0" ;
-     // console.log(frequencyData);
-    test.setAttribute("style","width:" + x1 + "vw;height:" + x1+"vh;background-color:" + color1);
+     console.log(frequencyData);
+     test.setAttribute("style","width:" + x1 + "vw;height:" + x1+"vh;background-color:" + color1);
   }
 
   audio.play();
