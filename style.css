@@ -3,9 +3,11 @@
   border-radius: 50%;
 }
 
-
-.grid_wrapper {
+.node{
   border-bottom:4px solid black;
+}
+.grid_wrapper {
+  transform: rotate(180deg);
   position:absolute;
   top: 50vh;
   left: 39vw;

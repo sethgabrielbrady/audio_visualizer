@@ -1,5 +1,6 @@
 var playing = false;
 var audio = document.getElementById('myAudio');
+let parent = document.getElementById('bar_test');
 
 function play() {
   var ctx = new AudioContext();
@@ -21,7 +22,7 @@ function play() {
 
     for (i=1; i <= 12; i++){
       let node = document.getElementById("node".concat(i));
-      node.setAttribute("style","height:" + frequencyData[i] + "px;background-color:red;");
+      node.setAttribute("style","height:" + frequencyData[i] + "px;");
     }
   }
 
@@ -37,6 +38,3 @@ function stopping(){
     playing = false;
   }
 }
-
-
-//highest freq val is 256
