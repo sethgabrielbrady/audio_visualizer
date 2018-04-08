@@ -1,6 +1,5 @@
 var playing = false;
 var audio = document.getElementById('myAudio');
-var test = document.getElementById('test');
 
 function play() {
   var ctx = new AudioContext();
@@ -14,19 +13,16 @@ function play() {
   // frequencyBinCount tells you how many values you'll receive from the analyser
   var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-  // we're ready to receive some data!
-  // loop
   function renderFrame() {
      requestAnimationFrame(renderFrame);
      // update data in frequencyData
      analyser.getByteFrequencyData(frequencyData);
      // render frame based on values in frequencyData
-     let x1 = frequencyData[0];
-     let y1 =frequencyData[1];
-     let color1 = "#" + frequencyData[0] + "0" ;
-     let color2 = "#" + frequencyData[1] + "0" ;
-     // console.log(frequencyData);
-    test.setAttribute("style","width:" + x1 + "vw;height:" + x1+"vh;background-color:" + color1);
+
+    for (i=1; i <= 12; i++){
+      let node = document.getElementById("node".concat(i));
+      node.setAttribute("style","height:" + frequencyData[i] + "px;background-color:red;");
+    }
   }
 
   audio.play();
@@ -41,3 +37,6 @@ function stopping(){
     playing = false;
   }
 }
+
+
+//highest freq val is 256

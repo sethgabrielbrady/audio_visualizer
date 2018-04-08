@@ -2,3 +2,14 @@
   transform:translate(10vw, 10vh);
   border-radius: 50%;
 }
+
+
+.grid_wrapper {
+  border-bottom:4px solid black;
+  position:absolute;
+  top: 50vh;
+  left: 39vw;
+  width:30vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
