@@ -10,8 +10,6 @@
   transform: rotate(180deg);
   position:absolute;
   top: 50vh;
-  left: 39vw;
-  width:30vw;
+  width:100vw;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
 }
