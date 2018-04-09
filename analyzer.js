@@ -3,11 +3,11 @@ let audio = document.getElementById('myAudio');
 let parent = document.getElementById('bar_test');
 let test_node = document.getElementById('test_node');
 let node;
-let nodeCount = 256;
+let nodeCount = 128;
 
 parent.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
 
-for (i=1; i <= nodeCount; i++){
+for (i=1; i <= nodeCount*4; i++){
   let divNode = "node".concat(i);
   parent.innerHTML += "<div class='node' id="+divNode+"></div>";
 }
@@ -30,9 +30,11 @@ function play() {
      analyser.getByteFrequencyData(frequencyData);
      // render frame based on values in frequencyData
 
-    for (i=1; i <= nodeCount; i++){
+    for (i=1; i <= (nodeCount*4); i++){
+      color =frequencyData[i]/i;
+      console.log(color);
       node = document.getElementById("node".concat(i));
-      node.setAttribute("style","height:" + frequencyData[i] + "px;");
+      node.setAttribute("style","height:" + frequencyData[i] + "px;border-color:rgba(255, 5, 133,"+color+");");
     }
   }
 

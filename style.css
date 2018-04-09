@@ -1,6 +1,5 @@
-.test_circle {
-  transform:translate(10vw, 10vh);
-  border-radius: 50%;
+body{
+  background-color: black;
 }
 
 .node{
@@ -9,7 +8,7 @@
 .grid_wrapper {
   transform: rotate(180deg);
   position:absolute;
-  top: 50vh;
+  top: 25vh;
   width:100vw;
   display: grid;
 }
