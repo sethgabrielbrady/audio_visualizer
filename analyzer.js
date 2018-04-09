@@ -1,32 +1,39 @@
-var playing = false;
-var audio = document.getElementById('myAudio');
-var test = document.getElementById('test');
+let playing = false;
+let audio = document.getElementById('myAudio');
+let parent = document.getElementById('bar_test');
+let test_node = document.getElementById('test_node');
+let node;
+let nodeCount = 256;
+
+parent.setAttribute("style","grid-template-columns:repeat(" +nodeCount+ ", 1fr);");
+
+for (i=1; i <= nodeCount; i++){
+  let divNode = "node".concat(i);
+  parent.innerHTML += "<div class='node' id="+divNode+"></div>";
+}
 
 function play() {
-  var ctx = new AudioContext();
-  var audioSrc = ctx.createMediaElementSource(audio);
-  var analyser = ctx.createAnalyser();
+  let ctx = new AudioContext();
+  let audioSrc = ctx.createMediaElementSource(audio);
+  let analyser = ctx.createAnalyser();
   // we have to connect the MediaElementSource with the analyser
   audioSrc.connect(analyser);
   audioSrc.connect(ctx.destination);
   // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
 
   // frequencyBinCount tells you how many values you'll receive from the analyser
-  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+  let frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-  // we're ready to receive some data!
-  // loop
   function renderFrame() {
      requestAnimationFrame(renderFrame);
      // update data in frequencyData
      analyser.getByteFrequencyData(frequencyData);
      // render frame based on values in frequencyData
-     let x1 = frequencyData[0];
-     let y1 =frequencyData[1];
-     let color1 = "#" + frequencyData[0] + "0" ;
-     let color2 = "#" + frequencyData[1] + "0" ;
-     // console.log(frequencyData);
-    test.setAttribute("style","width:" + x1 + "vw;height:" + x1+"vh;background-color:" + color1);
+
+    for (i=1; i <= nodeCount; i++){
+      node = document.getElementById("node".concat(i));
+      node.setAttribute("style","height:" + frequencyData[i] + "px;");
+    }
   }
 
   audio.play();
