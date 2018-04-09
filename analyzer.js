@@ -31,10 +31,10 @@ function play() {
      // render frame based on values in frequencyData
 
     for (i=1; i <= (nodeCount*4); i++){
-      color =frequencyData[i]/i;
+      color =frequencyData[i]/(i*.5);
       console.log(color);
       node = document.getElementById("node".concat(i));
-      node.setAttribute("style","height:" + frequencyData[i] + "px;border-color:rgba(255, 5, 133,"+color+");");
+      node.setAttribute("style","height:" + frequencyData[i] + "px;background-color:rgba(255, 5, 133,"+color+");");
     }
   }
 
